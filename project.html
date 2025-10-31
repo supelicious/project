@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartSpend - Personal Finance Tracker</title>
+    <link rel="stylesheet" href="project.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <div>
+                <h1>SmartSpend</h1>
+                <p class="subtitle">Track your finances effortlessly</p>
+            </div>
+            <div class="header-actions">
+                <!-- Theme toggle removed per user request. Dark styles may still be present in CSS. -->
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+    <div class="grid">
+        <div class="left">
+            <section id="transaction-form">
+        <h2>Add Transaction</h2>
+        <form id="transactionForm">
+            <label for="type">Type:</label>
+            <select id="type" name="type">
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+            </select><br><br>
+
+            <label for="category">Category:<span class="required" aria-hidden="true">*</span></label>
+            <input type="text" id="category" name="category" list="category-list" placeholder="e.g., Groceries, Rent, Salary" aria-describedby="categoryHelp" required>
+            <datalist id="category-list">
+                <!-- Options are seeded by JavaScript for relevance depending on Type -->
+            </datalist>
+            <div id="categoryHelp" class="field-hint">Pick a suggested category or type your own. Examples: Groceries, Rent, Utilities, Salary.</div>
+            <br><br>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required><br><br>
+
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" placeholder="Optional — where or why (e.g., Coffee with Sam)" maxlength="100" aria-describedby="descHelp descCharCount">
+            <div id="descHelp" class="field-hint">Short context helps when reviewing transactions. Max 100 characters.</div>
+            <div id="descCharCount" class="char-count">0/100</div>
+            <br><br>
+
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" required><br><br>
+
+            <button type="submit">Add Transaction</button>
+        </form>
+            </section>
+
+            <section id="transaction-list">
+                <h2>Transaction History</h2>
+                <ul id="transactions"></ul>
+            </section>
+        </div>
+
+        <div class="right">
+    
+    <section id="summary">
+        <h2>Summary</h2>
+        <div class="summary-cards">
+            <div class="card">
+                <div class="card-title">Total Income</div>
+                <div class="card-value" id="totalIncome">$0.00</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Total Expenses</div>
+                <div class="card-value" id="totalExpenses">$0.00</div>
+            </div>
+            <div class="card balance">
+                <div class="card-title">Current Balance</div>
+                <div class="card-value" id="currentBalance">$0.00</div>
+            </div>
+        </div>
+        <div class="summary-actions">
+            <button id="clearData" class="btn btn-secondary">Clear All Data</button>
+        </div>
+    </section>
+
+    <section id="spending-chart">
+        <h2>Spending Chart</h2>
+        <canvas id="chartCanvas"></canvas>
+        <div id="filterInfo" class="filter-info"></div>
+    </section>
+
+        </div> <!-- .right -->
+    </div> <!-- .grid -->
+
+    <footer>
+        <p>&copy; 2025 SmartSpend</p>
+    </footer>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="project.js"></script>
+</body>
+</html>
